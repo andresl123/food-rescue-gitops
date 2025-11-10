@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-service-deployment
+spec:
+  replicas: 1 # Start with one copy
+  selector:
+    matchLabels:
+      app: auth-service
+  template:
+    metadata:
+      labels:
+        app: auth-service
+    spec:
+      containers:
+        - name: auth-service
+          # This is the image our CI pipeline will build and push
+          image: andresl123/auth-service:latest
+          ports:
+            - containerPort: 8080 # The port your Java app runs on
+      nodeSelector:
+        # This is a good practice to ensure it only runs on your Pis
+        kubernetes.io/arch: arm64
