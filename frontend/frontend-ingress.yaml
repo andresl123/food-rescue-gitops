@@ -1,9 +1,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: auth-service
+  name: frontend-ingress
   namespace: food-rescue-live
   annotations:
+    # Use the same annotations as your auth-service
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/ssl-redirect-port: "8443"
     cert-manager.io/cluster-issuer: letsencrypt-http01
@@ -15,12 +16,12 @@ spec:
         paths:
           - backend:
               service:
-                name: auth-service
+                name: frontend-service
                 port:
-                  number: 8080
-            path: /auth-service
+                  number: 80
+            path: / # This will be the main entry point
             pathType: Prefix
   tls:
     - hosts:
         - asl.serveblog.net
-      secretName: auth-service-tls
+      secretName: frontend-service-tls # Re-use the same TLS secret
