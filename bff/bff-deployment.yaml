@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bff-deployment
+  namespace: food-rescue-live # Deploying to the same namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bff
+  template:
+    metadata:
+      labels:
+        app: bff
+    spec:
+      containers:
+        - name: bff
+          # This image will be updated by our CI pipeline
+          image: andresl123/ui-bff:latest
+          ports:
+            - containerPort: 8090 # Your BFF's port
+      nodeSelector:
+        kubernetes.io/arch: arm64

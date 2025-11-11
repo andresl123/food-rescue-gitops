@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: auth-service
+  name: bff-ingress
   namespace: food-rescue-live
   annotations:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
@@ -15,12 +15,12 @@ spec:
         paths:
           - backend:
               service:
-                name: auth-service
+                name: bff-service # Routes to your BFF
                 port:
-                  number: 8080
-            path: /auth-service
+                  number: 8090
+            path: /api/ # This routes ALL API calls
             pathType: Prefix
   tls:
     - hosts:
         - asl.serveblog.net
-      secretName: auth-service-tls
+      secretName: bff-service-tls # Re-use the same TLS secret
