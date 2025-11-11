@@ -16,7 +16,7 @@ spec:
       containers:
         - name: frontend
           # This image will be updated by our CI pipeline
-          image: andresl123/frontend-app:577b263
+          image: andresl123/frontend-app:d7cb3b8
           ports:
             - containerPort: 80 # Nginx serves on port 80
       nodeSelector:
