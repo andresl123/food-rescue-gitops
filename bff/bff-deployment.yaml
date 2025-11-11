@@ -19,5 +19,8 @@ spec:
           image: andresl123/ui-bff:latest
           ports:
             - containerPort: 8090 # Your BFF's port
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "k8s"
       nodeSelector:
         kubernetes.io/arch: arm64
