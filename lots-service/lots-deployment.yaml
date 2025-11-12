@@ -19,5 +19,8 @@ spec:
           image: andresl123/lots-matching-service:latest
           ports:
             - containerPort: 8081 # Port from your properties file
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "k8s"
       nodeSelector:
         kubernetes.io/arch: arm64
