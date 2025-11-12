@@ -16,7 +16,7 @@ spec:
       containers:
         - name: auth-service
           # This is the image our CI pipeline will build and push
-          image: andresl123/auth-users-service:3f25d13
+          image: andresl123/auth-users-service:1252442
           ports:
             - containerPort: 8080 # The port your Java app runs on
       nodeSelector:
