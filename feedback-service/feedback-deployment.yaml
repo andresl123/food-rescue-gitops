@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: feedback-service
-          image: andresl123/feedback-service:latest
+          image: andresl123/feedback-service:88165d0
           ports:
             - containerPort: 8084
 
