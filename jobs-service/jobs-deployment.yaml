@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jobs-service-deployment
+  namespace: food-rescue-live
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jobs-service
+  template:
+    metadata:
+      labels:
+        app: jobs-service
+    spec:
+      containers:
+        - name: jobs-service
+          image: andresl123/jobs-service:latest
+          ports:
+            - containerPort: 8082
+
+          # Activate the K8s profile
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "k8s"
+
+      nodeSelector:
+        kubernetes.io/arch: arm64
