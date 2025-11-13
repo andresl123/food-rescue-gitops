@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: feedback-service-deployment
+  namespace: food-rescue-live
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: feedback-service
+  template:
+    metadata:
+      labels:
+        app: feedback-service
+    spec:
+      containers:
+        - name: feedback-service
+          image: andresl123/feedback-service:latest
+          ports:
+            - containerPort: 8084
+
+          # Activate the K8s profile to load application-k8s.properties
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "k8s"
+
+      nodeSelector:
+        kubernetes.io/arch: arm64
