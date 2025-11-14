@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: evidence-service-deployment
+  namespace: food-rescue-live
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: evidence-service
+  template:
+    metadata:
+      labels:
+        app: evidence-service
+    spec:
+      containers:
+        - name: evidence-service
+          image: andresl123/evidence-service:latest
+          ports:
+            - containerPort: 8083
+
+          # Activate the K8s profile
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "k8s"
+
+      nodeSelector:
+        kubernetes.io/arch: arm64
