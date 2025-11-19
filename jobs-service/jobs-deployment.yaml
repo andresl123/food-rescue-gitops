@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: jobs-service
-          image: andresl123/jobs-service:7adbdde
+          image: andresl123/jobs-service:feff0b0
           ports:
             - containerPort: 8082
 
