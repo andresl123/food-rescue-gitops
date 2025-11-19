@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: evidence-service
-          image: andresl123/evidence-service:feff0b0
+          image: andresl123/evidence-service:f3cb739
           ports:
             - containerPort: 8083
 
