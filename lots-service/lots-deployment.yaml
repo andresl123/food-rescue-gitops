@@ -16,7 +16,7 @@ spec:
       containers:
         - name: lots-service
           # This image will be updated by our CI pipeline
-          image: andresl123/lots-matching-service:7521e27
+          image: andresl123/lots-matching-service:feff0b0
           ports:
             - containerPort: 8081 # Port from your properties file
           env:
