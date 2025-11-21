@@ -16,7 +16,7 @@ spec:
       containers:
         - name: bff
           # This image will be updated by our CI pipeline
-          image: andresl123/ui-bff:da70e67
+          image: andresl123/ui-bff:a01b748
           ports:
             - containerPort: 8090 # Your BFF's port
           env:
