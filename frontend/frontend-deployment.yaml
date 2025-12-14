@@ -36,5 +36,15 @@ spec:
           image: andresl123/frontend-app:bec27f3
           ports:
             - containerPort: 8085 # Nginx serves on port 8085
+          volumeMounts:
+            - name: nginx-cache
+              mountPath: /var/cache/nginx
+            - name: nginx-run
+              mountPath: /var/run
+      volumes:
+        - name: nginx-cache
+          emptyDir: {}
+        - name: nginx-run
+          emptyDir: {}
       nodeSelector:
         kubernetes.io/arch: arm64
