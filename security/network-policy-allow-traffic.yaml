@@ -1,0 +1,44 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-ingress-external
+  namespace: food-rescue-live
+spec:
+  podSelector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values: ["frontend", "bff"]
+  policyTypes:
+    - Ingress
+  ingress:
+    - {} # Allow from everywhere (for Ingress Controller)
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-bff-to-backends
+  namespace: food-rescue-live
+spec:
+  podSelector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          ["auth-service", "lots-service", "jobs-service", "feedback-service"]
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: bff
+      ports:
+        - protocol: TCP
+          port: 8080 # Auth
+        - protocol: TCP
+          port: 8081 # Lots
+        - protocol: TCP
+          port: 8082 # Jobs
+        - protocol: TCP
+          port: 8084 # Feedback

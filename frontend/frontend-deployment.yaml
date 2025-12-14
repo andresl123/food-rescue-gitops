@@ -13,11 +13,28 @@ spec:
       labels:
         app: frontend
     spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 3000
+        fsGroup: 2000
+        runAsNonRoot: true
       containers:
         - name: frontend
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests:
+              cpu: 100m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 256Mi
           # This image will be updated by our CI pipeline
           image: andresl123/frontend-app:7ef1a53
           ports:
-            - containerPort: 80 # Nginx serves on port 80
+            - containerPort: 8085 # Nginx serves on port 8085
       nodeSelector:
         kubernetes.io/arch: arm64

@@ -9,5 +9,5 @@ spec:
     app: frontend # Must match the deployment's label
   ports:
     - protocol: TCP
-      port: 80       # Expose port 80
-      targetPort: 80 # Target Nginx port 80
+      port: 8085 # Expose port 8085
+      targetPort: 8085 # Target Nginx port 8085
