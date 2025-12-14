@@ -8,7 +8,7 @@ spec:
     matchExpressions:
       - key: app
         operator: In
-        values: ["frontenda", "bffa"]
+        values: ["frontend", "bffa"]
   policyTypes:
     - Ingress
   ingress:
