@@ -25,7 +25,13 @@ spec:
       - key: app
         operator: In
         values:
-          ["auth-service", "lots-service", "jobs-service", "feedback-service"]
+          [
+            "auth-service",
+            "lots-service",
+            "jobs-service",
+            "feedback-service",
+            "evidence-service",
+          ]
   policyTypes:
     - Ingress
   ingress:
@@ -42,3 +48,5 @@ spec:
           port: 8082 # Jobs
         - protocol: TCP
           port: 8084 # Feedback
+        - protocol: TCP
+          port: 8085 # Evidence
