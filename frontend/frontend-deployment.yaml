@@ -33,7 +33,7 @@ spec:
               cpu: 200m
               memory: 256Mi
           # This image will be updated by our CI pipeline
-          image: andresl123/frontend-app:7ef1a53
+          image: andresl123/frontend-app:bec27f3
           ports:
             - containerPort: 8085 # Nginx serves on port 8085
       nodeSelector:

@@ -32,7 +32,7 @@ spec:
             limits:
               cpu: 500m
               memory: 512Mi
-          image: andresl123/jobs-service:latest
+          image: andresl123/jobs-service:6d132c4
           ports:
             - containerPort: 8082
 

@@ -32,7 +32,7 @@ spec:
             limits:
               cpu: 500m
               memory: 512Mi
-          image: andresl123/feedback-service:88165d0
+          image: andresl123/feedback-service:feff0b0
           ports:
             - containerPort: 8084
 
