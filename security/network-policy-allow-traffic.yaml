@@ -50,3 +50,23 @@ spec:
           port: 8084 # Feedback
         - protocol: TCP
           port: 8083 # Evidence
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-jobs-to-auth
+  namespace: food-rescue-live
+spec:
+  podSelector:
+    matchLabels:
+      app: auth-service
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: jobs-service
+      ports:
+        - protocol: TCP
+          port: 8080
