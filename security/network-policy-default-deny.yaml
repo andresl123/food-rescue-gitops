@@ -1,11 +1,9 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-all-ingress
+  name: deny-all-ingress
   namespace: food-rescue-live
 spec:
   podSelector: {}
   policyTypes:
     - Ingress
-  ingress:
-    - {} # Allow all traffic from everywhere
